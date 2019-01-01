@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">CoffeeApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li *ngIf="!loginService.isUserLogged()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li *ngIf="!loginService.isUserLogged()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+      <li *ngIf="loginService.isUserLogged()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard/order']">Order</a>
+      </li>
+      <li *ngIf="loginService.isUserLogged()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard/statistics']">Statistics</a>
+      </li>
+      <li (click)="logoutUser()" *ngIf="loginService.isUserLogged()" class="nav-item">
+        <a class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center mt-5">
+      <h1 class="mb-5"><i class="fas fa-mug-hot mr-4"></i>Welcome in coffeeApp {{name?.auth?.displayName }}!</h1>
+      <h5 class="mb-4">Please read our offer. Then select the drink and kitchen location.</h5>
+      <ul class="list-group" *ngFor="let coffee of coffees; let i = index">
+        <li id="coffeeElement{{i}}" class="list-group-item list-group-item-action" (click)="collectCoffee(i, coffee.price)">
+          <div class="row">
+            <div class="col-md-6 active">
+              {{coffee?.name}} 
+            </div>
+            <div class="col-md-6">
+              {{coffee?.price}}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="input-group mb-3 mt-5">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Kitchens:</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedKitchen" (ngModelChange)="selectKitchen($event)">
+          <option *ngFor="let kitchen of kitchens; let i = index" [ngValue]="i">{{kitchen.name}}</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Total price: {{totalPrice}}</h5>
+        </div>
+        <div class="col-md-6">
+          <button (click)="makeAnOrder()" class="btn btn-success btn-block">Order</button>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+
+
+
